@@ -4,7 +4,8 @@
 
 #include <sstream>
 
-#if LCC_PLATFORM == LCC_PLATFORM_IOS
+// TARGET_OS_MAC defines on both iPhone & Mac (TARGET_OS_IPHONE)
+#if TARGET_OS_MAC
 #include <CommonCrypto/CommonCrypto.h>
 #endif
 

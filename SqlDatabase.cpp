@@ -3,8 +3,8 @@
 #include "SqlRecordSet.h"
 #include <time.h>
 
-#if LCC_PLATFORM == LCC_PLATFORM_WIN32
-// Fix Chinese chars issues
+#ifdef WIN32
+// Fix Chinese chars issues on Windows platform
 std::string StringToUTF8(const std::string & str)
 {
 	int nwLen = ::MultiByteToWideChar(CP_ACP, 0, str.c_str(), -1, NULL, 0);
@@ -90,7 +90,7 @@ bool Database::open(string filename)
 #else
   _result_open = sqlite3_open(filename.c_str(), &_db);
 #endif
-	
+
 	if (isOpen())
 	{
 		return true;
