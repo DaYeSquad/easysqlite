@@ -4,9 +4,8 @@
 
 #include <sstream>
 
-// TARGET_OS_MAC defines on both iPhone & Mac (TARGET_OS_IPHONE)
-#if TARGET_OS_MAC
-#include <CommonCrypto/CommonCrypto.h>
+#ifdef __APPLE__
+#import <CommonCrypto/CommonCrypto.h>
 #endif
 
 
@@ -177,7 +176,7 @@ string binToHex(const char* buffer, int size)
 
 string generateSHA(const string& value)
 {
-#if LCC_PLATFORM == LCC_PLATFORM_IOS
+#ifdef __APPLE__
   const char *str = value.c_str();
   unsigned char r[CC_SHA1_DIGEST_LENGTH];
   CC_SHA1(str, static_cast<CC_LONG>(value.length()), r);
