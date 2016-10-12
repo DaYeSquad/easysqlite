@@ -20,6 +20,8 @@ private:
 	string _err_msg;
 	int _result_open;
 
+	static int busy_callback(void*, int count);
+
 public:
 	Database(void);
 	~Database(void);

@@ -2,6 +2,7 @@
 #include "SqlDatabase.h"
 #include "SqlRecordSet.h"
 #include <time.h>
+#include <unistd.h>
 
 #ifdef WIN32
 // Fix Chinese chars issues on Windows platform
@@ -93,6 +94,7 @@ bool Database::open(string filename)
 
 	if (isOpen())
 	{
+		sqlite3_busy_handler(_db, Database::busy_callback, (void*)_db);
 		return true;
 	} else {
 		_err_msg = sqlite3_errmsg(_db);
@@ -133,6 +135,14 @@ bool Database::transactionRollback()
 	return false;
 }
 
+	int Database::busy_callback(void *, int count) {
+		usleep(50000); //wait 50ms
+		if (count < 20) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 
 //sql eof
 };
