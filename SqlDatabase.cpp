@@ -1,4 +1,4 @@
-#include "base/base.h"
+#include "options.h"
 #include "SqlDatabase.h"
 #include "SqlRecordSet.h"
 #include <time.h>
@@ -86,7 +86,7 @@ bool Database::open(string filename)
 {
 	close();
 
-#if LCC_PLATFORM == LCC_PLATFORM_WIN32
+#ifdef WIN32
 	_result_open = sqlite3_open(StringToUTF8(filename).c_str(), &_db);
 #else
   _result_open = sqlite3_open(filename.c_str(), &_db);
