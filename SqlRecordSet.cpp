@@ -1,4 +1,5 @@
 #include "SqlRecordSet.h"
+#include "sakura/log.h"
 
 
 namespace sql
@@ -77,7 +78,7 @@ int RecordSet::on_next_record(void* param, int column_count, char** values, char
 
 		if (Field* field = recordset->_fields.getByIndex(index))
 		{
-			record.initColumnValue(index, value, field->getType());			
+			record.initColumnValue(index, value, field->getType());
 		}
   }
 
@@ -99,14 +100,15 @@ bool RecordSet::query(string sql)
 		return true;
 	}
 
-	if (*error)
-	{
+	if (error != nullptr) {
 		_err_msg = error;
-		sqlite3_free(error);
+	} else {
+		_err_msg = "";
 	}
+	sqlite3_free(error);
 
   printf("EasySqlite Error: %s \n", errMsg().c_str());
-	THROW_EXCEPTION("RecordSet::query: " + errMsg())
+//	THROW_EXCEPTION("RecordSet::query: " + errMsg())
 
 	return false;
 }
