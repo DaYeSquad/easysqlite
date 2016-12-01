@@ -1,4 +1,3 @@
-#include <android/log.h>
 #include "SqlTable.h"
 #include "sakura/log.h"
 

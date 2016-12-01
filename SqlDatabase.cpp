@@ -1,4 +1,3 @@
-#include "options.h"
 #include "SqlDatabase.h"
 #include "SqlRecordSet.h"
 #include <time.h>
