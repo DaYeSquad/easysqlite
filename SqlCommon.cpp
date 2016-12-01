@@ -1,5 +1,6 @@
 #include "SqlCommon.h"
 #include "SHA1.h"
+#include "base/base.h"
 
 #include <sstream>
 
