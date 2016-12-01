@@ -369,7 +369,7 @@ bool Table::updateRecord(Record* record, string where_condition) {
 }
 
 bool Table::createIndex(const std::string& index_name, const std::string& column_name) {
-#if ADNROID || __ANDROID__
+#if LCC_PLATFORM==LCC_PLATFORM_ANDROID
 		return true;
 #else
 		std::string sql = "CREATE INDEX " + index_name + " ON " + _tableName + " (" + column_name + ")";
