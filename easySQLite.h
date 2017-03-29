@@ -9,9 +9,9 @@
 #ifndef EASY_SQLITE_EASY_SQLITE_H_
 #define EASY_SQLITE_EASY_SQLITE_H_
 
-#include "easySQLite/SqlCommon.h"
-#include "easySQLite/SqlField.h"
-#include "easySQLite/SqlDatabase.h"
-#include "easySQLite/SqlTable.h"
+#include "easysqlite/SqlCommon.h"
+#include "easysqlite/SqlField.h"
+#include "easysqlite/SqlDatabase.h"
+#include "easysqlite/SqlTable.h"
 
 #endif /* EASY_SQLITE_EASY_SQLITE_H_ */
