@@ -152,7 +152,7 @@ void Value::setInteger(integer value) {
 void Value::setDouble(double value) {
   char buffer[128];
 
-  sprintf(buffer, "%0.8f", value);
+  sprintf(buffer, "%.15e", value);
 
   _isNull = false;
   _value = buffer;
